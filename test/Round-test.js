@@ -11,9 +11,9 @@ describe ('Round', function() {
 
   beforeEach(function() {
     card1 = new Card(1, 'How many Nazgul are there?', ['one', 'five', 'nine'], 'nine');
-    card2 = new Card(5, 'One does not simply...', ['get off the internet', 'walk into Mordor', 'sight-read a piece with six flats'], 'walk into Mordor');
-    card3 = new Card(19, 'How many meals are there?', [3, 5, 7], 7);
-    card4 = new Card(10, 'No admittance except...', ['on party business', 'if you speak friend', 'FOR FRODO!'], 'on party business');
+    card2 = new Card(2, 'One does not simply...', ['get off the internet', 'walk into Mordor', 'sight-read a piece with six flats'], 'walk into Mordor');
+    card3 = new Card(3, 'How many meals are there?', [3, 5, 7], 7);
+    card4 = new Card(4, 'No admittance except...', ['on party business', 'if you speak friend', 'FOR FRODO!'], 'on party business');
     deck = new Deck([card1, card2, card3, card4]);
     round = new Round(deck);
   });
@@ -38,17 +38,21 @@ describe ('Round', function() {
     expect(round.turnsCount).to.deep.equal(0);
   });
 
+  it('should update the turns count', function() {
+    round.takeTurn('guess');
+    round.takeTurn('guess');
+    round.takeTurn('guess');
+
+    expect(round.turnsCount).to.deep.equal(3);
+  });
+
   it('should know what the current card is', function() {
     expect(round.returnCurrentCard()).to.deep.equal(card1);
   });
 
-  // it('should update the turns count', function() {
-  //   round.takeTurn('guess');
-  //   round.takeTurn('guess');
-  //   round.takeTurn('guess');
-
-  //   expect(round.turnsCount).to.deep.equal(3);
-  // });
+  it('should update the current card when there is a new turn', function() {
+    expect(round.returnCurrentCard()).to.deep.equal(card1);
+  });
 
 
 

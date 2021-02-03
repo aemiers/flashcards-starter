@@ -13,8 +13,7 @@ class Round {
   }
 
   returnCurrentCard() {
-    console.log(this.deck)
-    return this.currentCard = this.deck.cardList[this.turnsCount];
+    return this.currentCard = this.deck.cardList[0];
   }
 
   takeTurn(guess) {
