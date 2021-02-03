@@ -2,7 +2,7 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Card = require('../src/Card');
-const Turn = require('../src/Turn');
+// const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 
 describe ('Deck', function() {
@@ -30,10 +30,10 @@ describe ('Deck', function() {
     
     const deck = new Deck();
 
-    deck.cardList.push(card1);
-    deck.cardList.push(card2);
-    deck.cardList.push(card3);
-    deck.cardList.push(card4);
+    deck.cardList.unshift(card1);
+    deck.cardList.unshift(card2);
+    deck.cardList.unshift(card3);
+    deck.cardList.unshift(card4);
 
     expect(deck.countCardsInDeck()).to.equal(4);
   });

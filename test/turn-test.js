@@ -33,7 +33,7 @@ describe ('Turn', function() {
     expect(turn.returnGuess()).to.equal('I am a guess');
   });
 
-  it('should be able to return the card', function() {
+  it('should be able to return the current card', function() {
     const card = new Card(1, 'How many Nazgul are there?', ['one', 'five', 'nine'], 'nine');
     const turn = new Turn('I am a guess', card);
     expect(turn.returnCard()).to.deep.equal(card);
