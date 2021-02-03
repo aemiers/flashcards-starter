@@ -4,7 +4,6 @@ const expect = chai.expect;
 const Card = require('../src/Card');
 
 describe('Card', function() {
-
   let card;
 
   beforeEach(function() {

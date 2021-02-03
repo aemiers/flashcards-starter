@@ -7,7 +7,7 @@ const Deck = require('../src/Deck');
 const Round = require('../src/Round');
 
 describe ('Round', function() {
-  let card1, card2, card3, card4, deck, round;
+  // let card1, card2, card3, card4, deck, round;
 
   beforeEach(function() {
     const card1 = new Card(1, 'How many Nazgul are there?', ['one', 'five', 'nine'], 'nine');
@@ -38,18 +38,25 @@ describe ('Round', function() {
     expect(round.turnsCount).to.deep.equal(0);
   });
 
-  it('should know what the current card is', function() {
-    expect(round.currentCard).to.deep.equal(card1);
-  });
+  // it('should know what the current card is', function() {
+  //   expect(round.currentCard).to.deep.equal(card1);
+  // });
 
-  it('should update the turns count', function() {
-    round.takeTurn('guess');
-    round.takeTurn('guess');
-    round.takeTurn('guess');
+  // it('should update the turns count', function() {
+  //   round.takeTurn('guess');
+  //   round.takeTurn('guess');
+  //   round.takeTurn('guess');
 
-    expect(round.turnsCount).to.deep.equal(3);
-  });
+  //   expect(round.turnsCount).to.deep.equal(3);
+  // });
 
+
+
+
+
+
+
+  
   //   it('should add a tally to the correct guess counter when the question is answered correctly', function() {
   //     const card1 = new Card(1, 'How many Nazgul are there?', ['one', 'five', 'nine'], 'nine');
   //     const turn = new Turn('nine', card1);
