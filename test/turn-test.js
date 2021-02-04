@@ -25,14 +25,14 @@ describe ('Turn', function() {
   });
 
   it('should be able to store the card object', function() {
-    expect(turn.currentCard).to.deep.equal(card);
+    expect(turn.card).to.deep.equal(card);
   });
 
   it('should be able to return the guess', function() {
     expect(turn.returnGuess()).to.equal('nine');
   });
 
-  it('should be able to return the current card', function() {
+  it('should be able to return the card', function() {
     expect(turn.returnCard()).to.deep.equal(card);
   });
 
