@@ -1,6 +1,6 @@
 class Deck {
-  constructor() {
-    this.cardList = [];
+  constructor(cards) {
+    this.cardList = cards;
   }
 
   countCardsInDeck() {
