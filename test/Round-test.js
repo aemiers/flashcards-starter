@@ -50,35 +50,51 @@ describe ('Round', function() {
     expect(round.returnCurrentCard()).to.deep.equal(card1);
   });
 
-  it('should update the current card when there is a new turn', function() {
-    expect(round.returnCurrentCard()).to.deep.equal(card1);
+  it('should know what the current card is when another turn is taken', function() {
+    round.takeTurn('nine', card1);
+    round.returnCurrentCard()
+    
+    expect(round.returnCurrentCard()).to.deep.equal(card2);
+    expect(round.deck.cardList.length).to.equal(3);
   });
 
+  it('should give feedback if the answer is correct', function() {
+    expect(round.takeTurn('nine', card1)).to.equal('Correct Answer!');
+  });
 
+  it('should give feedback if the answer is incorrect', function() {
+    expect(round.takeTurn('one', card1)).to.deep.equal('Close, but no cigar!');
+  });
 
+  it('should store the card in incorrect guesses array if it was answered incorrectly', function() {
+    round.takeTurn('one', card1);
 
+    expect(round.incorrectGuesses[0]).to.equal(1);
+  });
 
+  it('should update the current card when there is a new turn', function() {
+    round.takeTurn('nine', card1);
+    expect(round.returnCurrentCard()).to.deep.equal(card2);
 
+    round.takeTurn('walk into Mordor', card2);
+    expect(round.returnCurrentCard()).to.deep.equal(card3);
+  });
 
+  it('should calculate the percentage of questions answered correctly', function() {
+    round.takeTurn('nine', card1);
+    round.takeTurn('walk into Mordor', card2);
+    round.takeTurn(5, card3);
+    expect(round.calculatePercentCorrect()).to.deep.equal(67);
 
-  //   it('should add a tally to the correct guess counter when the question is answered correctly', function() {
-  //     const card1 = new Card(1, 'How many Nazgul are there?', ['one', 'five', 'nine'], 'nine');
-  //     const turn = new Turn('nine', card1);
-  //     const deck = new Deck();
-  //     const round = new Round(card1);
+    round.takeTurn('on party business', card4);
+    expect(round.calculatePercentCorrect()).to.deep.equal(75);
+  })
 
-  //     turn.evaluateGuess();
-  //     round.takeTurn();
+  it('should return a message at the end of the round with the correct percentage', function() {
+    round.takeTurn('nine', card1);
+    round.takeTurn('walk into Mordor', card2);
+    round.takeTurn(5, card3);
+    expect(round.endRound()).to.deep.equal('** Round over! ** You answered 67% of the questions correctly!');
+  })
 
-  //   // expect(round.turnsCount).to.deep.equal(1);
-  //   expect(round.correctGuesses).to.deep.equal(1);
-  // });
 });
-
-  
-    // const deck = new Deck();
-
-    // deck.cardList.unshift(card1);
-    // deck.cardList.unshift(card2);
-    // deck.cardList.unshift(card3);
-    // deck.cardList.unshift(card4);

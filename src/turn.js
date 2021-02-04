@@ -13,7 +13,9 @@ class Turn {
   }
 
   evaluateGuess() {
-    return this.guess === this.currentCard.correctAnswer;
+    // console.log('guess', this.guess);
+    // console.log('correct answer', this.currentCard.correctAnswer)
+    return this.guess === this.currentCard.correctAnswer ? true : false;
   }
 
   answerFeedback() {

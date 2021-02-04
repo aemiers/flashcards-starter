@@ -37,6 +37,8 @@ describe ('Turn', function() {
   });
 
   it('should be able to verify if the guess is correct', function() {
+    turn = new Turn('nine', card);
+
     expect(turn.evaluateGuess()).to.deep.equal(true);
   });
 
