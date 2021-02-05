@@ -17,7 +17,7 @@ class Turn {
   }
 
   answerFeedback() {
-    return this.evaluateGuess() ? 'Correct Answer!' : 'Close, but no cigar!';
+    return this.evaluateGuess() ? 'CORRECT!' : 'CLOSE, BUT NO CIGAR!';
   }
 }
 

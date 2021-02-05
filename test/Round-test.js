@@ -3,7 +3,6 @@ const expect = chai.expect;
 
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
-const Game = require('../src/Game');
 const Round = require('../src/Round');
 
 describe ('Round', function() {
@@ -47,8 +46,6 @@ describe ('Round', function() {
   });
 
   it('should know what the current card is', function() {
-    round.takeTurn('guess');
-    
     expect(round.returnCurrentCard()).to.deep.equal(card1);
   });
 
@@ -56,15 +53,15 @@ describe ('Round', function() {
     round.takeTurn('nine');
     round.returnCurrentCard()
     
-    expect(round.returnCurrentCard()).to.deep.equal(card1);
+    expect(round.returnCurrentCard()).to.deep.equal(card2);
   });
 
   it('should give feedback if the answer is correct', function() {
-    expect(round.takeTurn('nine')).to.equal('Correct Answer!');
+    expect(round.takeTurn('nine')).to.equal('CORRECT!');
   });
 
   it('should give feedback if the answer is incorrect', function() {
-    expect(round.takeTurn('one')).to.deep.equal('Close, but no cigar!');
+    expect(round.takeTurn('one')).to.deep.equal('CLOSE, BUT NO CIGAR!');
   });
 
   it('should store the card in incorrect guesses array if it was answered incorrectly', function() {
@@ -75,10 +72,10 @@ describe ('Round', function() {
 
   it('should update the current card when there is a new turn', function() {
     round.takeTurn('nine');
-    expect(round.returnCurrentCard()).to.deep.equal(card1);
+    expect(round.returnCurrentCard()).to.deep.equal(card2);
 
     round.takeTurn('walk into Mordor');
-    expect(round.returnCurrentCard()).to.deep.equal(card2);
+    expect(round.returnCurrentCard()).to.deep.equal(card3);
   });
 
   it('should calculate the percentage of questions answered correctly', function() {

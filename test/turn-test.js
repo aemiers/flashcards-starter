@@ -48,12 +48,13 @@ describe ('Turn', function() {
   });
 
   it('should tell the user if the guess is correct', function() {
-    expect(turn.answerFeedback()).to.deep.equal('Correct Answer!');
+    expect(turn.answerFeedback()).to.deep.equal('CORRECT!');
   });
 
   it('should tell the user if the guess is incorrect', function() {
     turn = new Turn('one', card);
-    expect(turn.answerFeedback()).to.deep.equal('Close, but no cigar!');
+
+    expect(turn.answerFeedback()).to.deep.equal('CLOSE, BUT NO CIGAR!');
   });
 });
 
