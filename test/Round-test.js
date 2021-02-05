@@ -2,7 +2,6 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const Card = require('../src/Card');
-// const Turn = require('../src/Turn');
 const Deck = require('../src/Deck');
 const Round = require('../src/Round');
 
@@ -51,50 +50,51 @@ describe ('Round', function() {
   });
 
   it('should know what the current card is when another turn is taken', function() {
-    round.takeTurn('nine', card1);
+    round.takeTurn('nine');
     round.returnCurrentCard()
     
     expect(round.returnCurrentCard()).to.deep.equal(card2);
-    expect(round.deck.cardList.length).to.equal(3);
   });
 
   it('should give feedback if the answer is correct', function() {
-    expect(round.takeTurn('nine', card1)).to.equal('Correct Answer!');
+    expect(round.takeTurn('nine')).to.equal('CORRECT!');
   });
 
   it('should give feedback if the answer is incorrect', function() {
-    expect(round.takeTurn('one', card1)).to.deep.equal('Close, but no cigar!');
+    expect(round.takeTurn('one')).to.deep.equal('CLOSE, BUT NO CIGAR!');
   });
 
   it('should store the card in incorrect guesses array if it was answered incorrectly', function() {
-    round.takeTurn('one', card1);
+    round.takeTurn('one');
 
     expect(round.incorrectGuesses[0]).to.equal(1);
   });
 
   it('should update the current card when there is a new turn', function() {
-    round.takeTurn('nine', card1);
+    round.takeTurn('nine');
     expect(round.returnCurrentCard()).to.deep.equal(card2);
 
-    round.takeTurn('walk into Mordor', card2);
+    round.takeTurn('walk into Mordor');
     expect(round.returnCurrentCard()).to.deep.equal(card3);
   });
 
   it('should calculate the percentage of questions answered correctly', function() {
-    round.takeTurn('nine', card1);
-    round.takeTurn('walk into Mordor', card2);
-    round.takeTurn(5, card3);
+    round.takeTurn('nine');
+    round.takeTurn('walk into Mordor');
+    round.takeTurn(5);
     expect(round.calculatePercentCorrect()).to.deep.equal(67);
 
-    round.takeTurn('on party business', card4);
+    round.takeTurn('on party business');
     expect(round.calculatePercentCorrect()).to.deep.equal(75);
   })
 
   it('should return a message at the end of the round with the correct percentage', function() {
-    round.takeTurn('nine', card1);
-    round.takeTurn('walk into Mordor', card2);
-    round.takeTurn(5, card3);
-    expect(round.endRound()).to.deep.equal('** Round over! ** You answered 67% of the questions correctly!');
+    round.takeTurn('nine');
+    round.takeTurn('walk into Mordor');
+    round.takeTurn(5);
+    round.endRound();
+    
+    expect(round.endRound()).to.equal('** Round over! ** You answered 67% of the questions correctly!');
   })
 
 });

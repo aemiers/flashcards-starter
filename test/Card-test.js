@@ -16,6 +16,7 @@ describe('Card', function() {
 
   it('should be an instance of Card', function() {
     card = new Card();
+    
     expect(card).to.be.an.instanceof(Card);
   }); 
 
